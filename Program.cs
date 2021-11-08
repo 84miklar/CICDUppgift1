@@ -13,6 +13,7 @@ namespace CICDUppgift1
             Seeder.AddNewUsers();
             loginPointer.LoginView();
             Console.WriteLine("hejehj");
+            Console.WriteLine("testtest");
         }
     }
 }
