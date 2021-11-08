@@ -1,20 +1,17 @@
 ﻿using CICDUppgift1.Database;
 using CICDUppgift1.Model;
-using CICDUppgift1.Views;
 using System;
 using System.Linq;
 
 namespace CICDUppgift1
 {
-    internal class Program
+    class Program
     {
-        private static void Main(string[] args)
+        static void Main(string[] args)
         {
-            LoginMenuView loginPointer = new();
-
+            Console.WriteLine("Hello World!");
             Seeder.AddNewUsers();
             loginPointer.LoginView();
-            Console.WriteLine("hej");
         }
     }
 }
