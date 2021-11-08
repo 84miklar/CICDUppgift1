@@ -6,11 +6,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Controller\**" />
     <Compile Remove="View\**" />
-    <EmbeddedResource Remove="Controller\**" />
     <EmbeddedResource Remove="View\**" />
-    <None Remove="Controller\**" />
     <None Remove="View\**" />
   </ItemGroup>
 
