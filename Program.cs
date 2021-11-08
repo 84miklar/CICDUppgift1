@@ -5,13 +5,14 @@ using System.Linq;
 
 namespace CICDUppgift1
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
             Seeder.AddNewUsers();
             loginPointer.LoginView();
+            Console.WriteLine("hejehj");
         }
     }
 }
