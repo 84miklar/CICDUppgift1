@@ -11,6 +11,7 @@ namespace CICDUppgift1
         {
             Console.WriteLine("Hello World!");
             Seeder.AddNewUsers();
+            loginPointer.LoginView();
         }
     }
 }
