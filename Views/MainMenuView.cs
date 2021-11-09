@@ -12,7 +12,7 @@ namespace CICDUppgift1.Views
     public class MainMenuView
     {
         private InputCheck check = new();
-        private UserMenuController userController = new();
+
         private AdminMenuController adminController = new();
 
         internal void MainMenu(User loggedInUser)
@@ -31,27 +31,30 @@ namespace CICDUppgift1.Views
 
         private void AdminMenuSwitch(User loggedInUser)
         {
-            Console.WriteLine("1. Show salary \n2.Show title \n3. Handle users \n 4. Exit");
-            var userChoice = check.TryParse();
-            switch (userChoice)
+            while (true)
             {
-                case 1:
-                    ShowSalary(loggedInUser);
-                    break;
+                Console.WriteLine("1. Show salary \n2.Show title \n3. Handle users \n 4. Exit");
+                var userChoice = check.TryParse();
+                switch (userChoice)
+                {
+                    case 1:
+                        ShowSalary(loggedInUser);
+                        break;
 
-                case 2:
-                    ShowTitle(loggedInUser);
-                    break;
+                    case 2:
+                        ShowTitle(loggedInUser);
+                        break;
 
-                case 3:
-                    HandleUsers();
-                    break;
+                    case 3:
+                        HandleUsers();
+                        break;
 
-                case 4:
-                    return;
+                    case 4:
+                        return;
 
-                default:
-                    break;
+                    default:
+                        break;
+                } 
             }
         }
 
@@ -132,32 +135,36 @@ namespace CICDUppgift1.Views
 
         private void UserMenuSwitch(User loggedInUser)
         {
-            Console.WriteLine("1. Show salary \n2.Show title \n3. Delete yourself \n 4. Exit");
-            var userChoice = check.TryParse();
-            switch (userChoice)
+            while (true)
             {
-                case 1:
-                    ShowSalary(loggedInUser);
-                    break;
+                Console.WriteLine("1. Show salary \n2.Show title \n3. Delete yourself \n 4. Exit");
+                var userChoice = check.TryParse();
+                switch (userChoice)
+                {
+                    case 1:
+                        ShowSalary(loggedInUser);
+                        continue;
 
-                case 2:
-                    ShowTitle(loggedInUser);
-                    break;
+                    case 2:
+                        ShowTitle(loggedInUser);
+                        continue;
 
-                case 3:
-                    DeleteUser(loggedInUser);
-                    break;
+                    case 3:
+                        DeleteUser(loggedInUser);
+                        continue;
 
-                case 4:
-                    return;
+                    case 4:
+                        return;
 
-                default:
-                    break;
+                    default:
+                        break;
+                } 
             }
         }
 
         private void DeleteUser(User loggedInUser)
         {
+            UserMenuController userController = new();
             userController.DeleteUser(loggedInUser);
         }
 

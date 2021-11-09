@@ -17,7 +17,7 @@
 
         public void LoginView()
         {
-            while (true)
+            while (keepGoing)
             {
                 Console.WriteLine("Welcome to the your co-worker space");
                 Console.WriteLine("1. Enter your details \n2. Exit");
@@ -26,6 +26,7 @@
                 {
                     case 1:
                         Login();
+                        keepGoing = false;
                         break;
 
                     case 2:

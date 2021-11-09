@@ -14,7 +14,7 @@
     {
         private UserDatabase context = new();
         private InputCheck helper = new();
-        private MainMenuView menu = new();
+
 
         public User DeleteUser(User loggedInUser)
         {
@@ -33,6 +33,7 @@
                     else
                     {
                         Console.WriteLine("Something went wrong with deleteing your account.");
+                        MainMenuView menu = new();
                         menu.MainMenu(loggedInUser);
                     }
                 }

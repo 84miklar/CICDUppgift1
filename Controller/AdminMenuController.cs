@@ -12,16 +12,16 @@
     {
         private UserDatabase context = new();
 
-        public string AddUser(string username, string password, int salary, string title, bool isAdmin)
+        public void AddUser(string username, string password, int salary, string title, bool isAdmin)
         {
             {
                 if (Seeder.FillUser(username, password, salary, title, isAdmin))
                 {
-                    return "User was added to database";
+                    Console.WriteLine("User was added to database");
                 }
                 else
                 {
-                    return "The user does already exist in database";
+                    Console.WriteLine("The user does already exist in database");
                 }
             }
         }
