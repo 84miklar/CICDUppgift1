@@ -15,7 +15,6 @@
         private UserDatabase context = new();
         private InputCheck helper = new();
 
-
         public User DeleteUser(User loggedInUser)
         {
             {

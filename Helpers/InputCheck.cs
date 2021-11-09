@@ -31,5 +31,23 @@
             Console.WriteLine("\nPlease press enter to continue.");
             Console.ReadKey();
         }
+
+        public bool StringCheck(string input)
+        {
+            bool letterOk = false;
+            bool digitOk = false;
+            for (int i = 0; i < input.Length; i++)
+            {
+                if (Char.IsDigit(input[i]))
+                {
+                    digitOk = true;
+                }
+                else if (Char.IsLetter(input[i]))
+                {
+                    letterOk = true;
+                }
+            }
+            return digitOk && letterOk;
+        }
     }
 }
