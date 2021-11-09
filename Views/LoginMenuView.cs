@@ -11,6 +11,7 @@
     internal class LoginMenuView
     {
         private LoginMenuController controller = new();
+        private MainMenuView mainMenuPointer = new();
         private InputCheck check = new();
         public bool keepGoing = true;
 
@@ -32,7 +33,7 @@
 
                     default:
                         break;
-                } 
+                }
             }
         }
 
@@ -49,7 +50,7 @@
             }
             else
             {
-                MainMenuView.MainMenu(loggedInUser);
+                mainMenuPointer.MainMenu(loggedInUser);
             }
         }
     }

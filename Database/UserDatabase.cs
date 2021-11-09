@@ -16,9 +16,10 @@ namespace CICDUppgift1.Database
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            var myDocs = System.Environment.GetFolderPath(
-            System.Environment.SpecialFolder.MyDocuments);
-            var path = Path.Combine(myDocs, "Databases");
+            //var myDocs = System.Environment.GetFolderPath(
+            //System.Environment.SpecialFolder.MyDocuments);
+            var myFolder = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName;
+            var path = Path.Combine(myFolder, "Databases");
             Directory.CreateDirectory(path);
             path = Path.Combine(path, DatabaseName);
             optionsBuilder.UseSqlite($"Data Source={path}; ");
