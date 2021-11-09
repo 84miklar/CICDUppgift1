@@ -12,32 +12,5 @@ namespace CICDUppgift1.Controller
 {
     public class MainMenuController
     {
-        private UserDatabase context = new();
-        private InputCheck helper = new();
-        private MainMenuView menu = new();
-
-        public User DeleteUser(User loggedInUser)
-        {
-            {
-                var user = context.Users.FirstOrDefault(u => u.Name == loggedInUser.Name && u.Password == loggedInUser.Password);
-                if (user != null)
-                {
-                    context.Users.Remove(user);
-                    context.SaveChanges();
-                    user = context.Users.FirstOrDefault(u => u.Name == loggedInUser.Name && u.Password == loggedInUser.Password);
-                    if(user == null)
-                    {
-                        Console.WriteLine("You have succesfully deleted your account");
-                        helper.PressEnter();
-                    }
-                    else
-                    {
-                        Console.WriteLine("Something went wrong with deleteing your account.");
-                        menu.MainMenu(loggedInUser);
-                    }
-                }
-            }
-            return null;
-        }
     }
 }

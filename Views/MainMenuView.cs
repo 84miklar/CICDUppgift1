@@ -12,15 +12,16 @@ namespace CICDUppgift1.Views
     public class MainMenuView
     {
         private InputCheck check = new();
-        private MainMenuController controllerPointer = new();
+        private UserMenuController userController = new();
+        private AdminMenuController adminController = new();
 
         internal void MainMenu(User loggedInUser)
         {
             Console.Clear();
-            
+
             if (!loggedInUser.IsAdmin)
             {
-            UserMenuSwitch(loggedInUser);
+                UserMenuSwitch(loggedInUser);
             }
             else
             {
@@ -43,7 +44,7 @@ namespace CICDUppgift1.Views
                     break;
 
                 case 3:
-                    DeleteUser(loggedInUser);
+                    HandleUsers();
                     break;
 
                 case 4:
@@ -52,6 +53,81 @@ namespace CICDUppgift1.Views
                 default:
                     break;
             }
+        }
+
+        private void HandleUsers()
+        {
+            Console.WriteLine("1. Add new user \n 2. See all users \n 3. Delete Users \n 4. Exit");
+            var userChoice = check.TryParse();
+            switch (userChoice)
+            {
+                case 1:
+                    AddNewUser();
+                    break;
+
+                case 2:
+
+                    break;
+
+                case 3:
+
+                    break;
+
+                case 4:
+                    return;
+
+                default:
+                    break;
+            }
+        }
+
+        private void AddNewUser()
+        {
+            Console.WriteLine("Both username and password have to contain both letters and numbers");
+            Console.WriteLine("Fill in username: ");
+            var username = Console.ReadLine();
+            if (!StringCheck(username))
+            {
+                AddNewUser();
+            }
+            Console.WriteLine("Fill in password: ");
+            var password = Console.ReadLine();
+            if (!StringCheck(password))
+            {
+                AddNewUser();
+            }
+            Console.WriteLine("Is this person admin? y/n");
+            bool isAdmin = false;
+            var adminQuestion = Console.ReadLine().ToLower();
+            if (adminQuestion == "y")
+            {
+                isAdmin = true;
+            }
+            Console.WriteLine("Fill in salary: ");
+            var salary = check.TryParse();
+
+            Console.WriteLine("Fill in the title of person: ");
+            var title = Console.ReadLine();
+
+            adminController.AddUser(username, password, salary, title, isAdmin);
+        }
+
+        private bool StringCheck(string input)
+        {
+            bool letterOk = false;
+            bool digitOk = false;
+            for (int i = 0; i < input.Length; i++)
+            {
+                if (Char.IsDigit(input[i]))
+                {
+                    digitOk = true;
+                }
+                else if (Char.IsLetter(input[i]))
+                {
+                    letterOk = true;
+                }
+            }
+            return digitOk && letterOk;
         }
 
         private void UserMenuSwitch(User loggedInUser)
@@ -82,7 +158,7 @@ namespace CICDUppgift1.Views
 
         private void DeleteUser(User loggedInUser)
         {
-            controllerPointer.DeleteUser(loggedInUser);
+            userController.DeleteUser(loggedInUser);
         }
 
         private void ShowTitle(User loggedInUser)
