@@ -18,6 +18,7 @@
             if (parsedValue <= 0)
             {
                 Console.WriteLine("Invalid input. Input must be an integer more than 0.");
+                return -1;
             }
             return parsedValue;
         }
