@@ -26,7 +26,7 @@
         /// <summary>
         /// Sends a message to user to press enter button.
         /// </summary>
-        public static void PressEnter()
+        public void PressEnter()
         {
             Console.WriteLine("\nPlease press enter to continue.");
             Console.ReadKey();

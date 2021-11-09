@@ -18,8 +18,9 @@ namespace CICDUppgift1.Database
         {
             //var myDocs = System.Environment.GetFolderPath(
             //System.Environment.SpecialFolder.MyDocuments);
-            var myFolder = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName;
-            var path = Path.Combine(myFolder, "Databases");
+            string desktop = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+          //  var myFolder = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName;
+            var path = Path.Combine(desktop, "Databases");
             Directory.CreateDirectory(path);
             path = Path.Combine(path, DatabaseName);
             optionsBuilder.UseSqlite($"Data Source={path}; ");

@@ -2,7 +2,7 @@
 
 namespace CICDUppgift1.Migrations
 {
-    public partial class InitialDatabase : Migration
+    public partial class newMig : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -15,7 +15,8 @@ namespace CICDUppgift1.Migrations
                     Name = table.Column<string>(type: "TEXT", nullable: true),
                     Password = table.Column<string>(type: "TEXT", nullable: true),
                     Title = table.Column<string>(type: "TEXT", nullable: true),
-                    Salary = table.Column<int>(type: "INTEGER", nullable: false)
+                    Salary = table.Column<int>(type: "INTEGER", nullable: false),
+                    IsAdmin = table.Column<bool>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
