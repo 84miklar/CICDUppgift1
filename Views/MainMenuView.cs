@@ -12,11 +12,11 @@ namespace CICDUppgift1.Views
     public class MainMenuView
     {
         private InputCheck check = new();
-        private AdminMenuView adminPointer = new();
-        private UserMenuView userPointer = new();
 
         internal void MainMenu(User loggedInUser)
         {
+            AdminMenuView adminPointer = new();
+            UserMenuView userPointer = new();
             Console.Clear();
 
             if (!loggedInUser.IsAdmin)

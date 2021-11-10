@@ -13,12 +13,13 @@
     {
         private InputCheck check = new();
 
-        private UserMenuController userController = new();
-
         public void UserMenuSwitch(User loggedInUser)
         {
             MainMenuView mainPointer = new();
-            while (true)
+            LoginMenuView loginPointer = new();
+            var keepGoing = true;
+
+            while (keepGoing)
             {
                 Console.WriteLine("1. Show salary \n2.Show title \n3. Delete yourself \n 4. Exit");
                 var userChoice = check.TryParse();
@@ -33,8 +34,8 @@
                         continue;
 
                     case 3:
-                        DeleteUser(loggedInUser);
-                        continue;
+                        if (!(keepGoing = DeleteUser(loggedInUser))) loginPointer.LoginView();
+                        break;
 
                     case 4:
                         return;
@@ -45,19 +46,21 @@
             }
         }
 
-        public void DeleteUser(User loggedInUser)
+        public bool DeleteUser(User loggedInUser)
         {
+            UserMenuController userController = new();
             Console.WriteLine("Please enter your username: ");
             var username = Console.ReadLine();
             Console.WriteLine("Please enter your password: ");
             var password = Console.ReadLine();
             if (username == loggedInUser.Name && password == loggedInUser.Password)
             {
-                userController.DeleteUser(loggedInUser);
+                return userController.DeleteUser(loggedInUser);
             }
             else
             {
                 Console.WriteLine("Input does not match any valid user information");
+                return true;
             }
         }
     }

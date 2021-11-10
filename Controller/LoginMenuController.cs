@@ -10,10 +10,9 @@
 
     internal class LoginMenuController
     {
-        private UserDatabase context = new();
-
         public User Login(string username, string password)
         {
+            UserDatabase context = new();
             {
                 var user = context.Users.FirstOrDefault(u => u.Name == username && u.Password == password);
                 if (user != null)
