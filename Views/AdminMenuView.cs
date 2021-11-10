@@ -58,7 +58,7 @@
                     break;
 
                 case 3:
-
+                    DeleteUser();
                     break;
 
                 case 4:
@@ -67,6 +67,16 @@
                 default:
                     break;
             }
+        }
+
+        private void DeleteUser()
+        {
+            Console.WriteLine("Fill in username of the user you want to delete: ");
+            var username = Console.ReadLine();
+            Console.WriteLine("Fill in password of the user you want to delete: ");
+            var password = Console.ReadLine();
+            AdminMenuController adminController = new();
+            adminController.DeleteUser(username, password);
         }
 
         private void AddNewUser()

@@ -23,30 +23,45 @@
                 }
             }
         }
+        public void DeleteUser(string username, string password)
+        {
+            UserDatabase context = new();
+            var user = context.Users.FirstOrDefault(u => u.Name == username && u.Password == password);
+            if (user != null)
+            {
+                context.Users.Remove(user);
+                context.SaveChanges();
+                Console.WriteLine($"You have succesfully removed {username}");
+            }
+            else
+            {
+                Console.WriteLine("No user was found...");
+            }
 
-        //public User FindUser(User l)
-        //{
-        //    {
-        //        var user = context.Users.FirstOrDefault(u => u.Name == loggedInUser.Name && u.Password == loggedInUser.Password);
-        //        if (user != null)
-        //        {
-        //            context.Users.Remove(user);
-        //            context.SaveChanges();
-        //            user = context.Users.FirstOrDefault(u => u.Name == loggedInUser.Name && u.Password == loggedInUser.Password);
-        //            if (user == null)
-        //            {
-        //                Console.WriteLine("You have succesfully deleted your account");
-        //                helper.PressEnter();
-        //            }
-        //            else
-        //            {
-        //                Console.WriteLine("Something went wrong with deleteing your account.");
-        //                MainMenuView menu = new();
-        //                menu.MainMenu(loggedInUser);
-        //            }
-        //        }
-        //    }
-        //    return null;
-        //}
+        }
+            //public User FindUser(User l)
+            //{
+            //    {
+            //        var user = context.Users.FirstOrDefault(u => u.Name == loggedInUser.Name && u.Password == loggedInUser.Password);
+            //        if (user != null)
+            //        {
+            //            context.Users.Remove(user);
+            //            context.SaveChanges();
+            //            user = context.Users.FirstOrDefault(u => u.Name == loggedInUser.Name && u.Password == loggedInUser.Password);
+            //            if (user == null)
+            //            {
+            //                Console.WriteLine("You have succesfully deleted your account");
+            //                helper.PressEnter();
+            //            }
+            //            else
+            //            {
+            //                Console.WriteLine("Something went wrong with deleteing your account.");
+            //                MainMenuView menu = new();
+            //                menu.MainMenu(loggedInUser);
+            //            }
+            //        }
+            //    }
+            //    return null;
+            //}
     }
 }
