@@ -11,25 +11,30 @@
     internal class LoginMenuView
     {
         private LoginMenuController controller = new();
+        private MainMenuView mainMenuPointer = new();
         private InputCheck check = new();
+        public bool keepGoing = true;
 
         public void LoginView()
         {
-            Console.WriteLine("Welcome to the your co-worker space");
-            Console.WriteLine("1. Enter your details \n2. Exit");
-            var userChoice = check.TryParse();
-            switch (userChoice)
+            while (keepGoing)
             {
-                case 1:
-                    Login();
-                    break;
+                Console.WriteLine("Welcome to the your co-worker space");
+                Console.WriteLine("1. Enter your details \n2. Exit");
+                var userChoice = check.TryParse();
+                switch (userChoice)
+                {
+                    case 1:
+                        Login();
+                        keepGoing = false;
+                        break;
 
-                case 0:
-                    return;
+                    case 2:
+                        return;
 
-                default:
-                    Console.WriteLine("Invalid input");
-                    break;
+                    default:
+                        break;
+                }
             }
         }
 
@@ -46,6 +51,7 @@
             }
             else
             {
+                mainMenuPointer.MainMenu(loggedInUser);
             }
         }
     }

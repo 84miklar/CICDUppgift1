@@ -18,6 +18,7 @@
             if (parsedValue <= 0)
             {
                 Console.WriteLine("Invalid input. Input must be an integer more than 0.");
+                return -1;
             }
             return parsedValue;
         }
@@ -25,10 +26,28 @@
         /// <summary>
         /// Sends a message to user to press enter button.
         /// </summary>
-        public static void PressEnter()
+        public void PressEnter()
         {
             Console.WriteLine("\nPlease press enter to continue.");
             Console.ReadKey();
+        }
+
+        public bool StringCheck(string input)
+        {
+            bool letterOk = false;
+            bool digitOk = false;
+            for (int i = 0; i < input.Length; i++)
+            {
+                if (Char.IsDigit(input[i]))
+                {
+                    digitOk = true;
+                }
+                else if (Char.IsLetter(input[i]))
+                {
+                    letterOk = true;
+                }
+            }
+            return digitOk && letterOk;
         }
     }
 }

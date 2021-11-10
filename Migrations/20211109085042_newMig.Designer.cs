@@ -8,8 +8,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CICDUppgift1.Migrations
 {
     [DbContext(typeof(UserDatabase))]
-    [Migration("20211108093217_InitialDatabase")]
-    partial class InitialDatabase
+    [Migration("20211109085042_newMig")]
+    partial class newMig
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -21,6 +21,9 @@ namespace CICDUppgift1.Migrations
                 {
                     b.Property<int>("UserId")
                         .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<bool>("IsAdmin")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Name")
