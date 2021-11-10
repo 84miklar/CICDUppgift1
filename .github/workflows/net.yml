@@ -25,8 +25,9 @@ jobs:
       run: dotnet build --no-restore
     - name: Test
       run: dotnet test --no-build --verbosity normal
-    - name: Mega-Linter
-      uses: megalinter/megalinter@v5.0.7
+    - name: Super-Linter
+      uses: github/super-linter@v4.8.1
+
       
   WindowsAndMacJob:
     name: WindowsAndMac
