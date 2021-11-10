@@ -10,8 +10,6 @@
 
     internal class AdminMenuController
     {
-        private UserDatabase context = new();
-
         public void AddUser(string username, string password, int salary, string title, bool isAdmin)
         {
             {

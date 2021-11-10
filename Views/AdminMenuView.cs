@@ -13,8 +13,6 @@
     {
         private InputCheck check = new();
 
-        private AdminMenuController adminController = new();
-
         public void AdminMenuSwitch(User loggedInUser)
         {
             MainMenuView mainPointer = new();
@@ -73,6 +71,7 @@
 
         private void AddNewUser()
         {
+            AdminMenuController adminController = new();
             Console.WriteLine("Both username and password have to contain both letters and numbers");
             Console.WriteLine("Fill in username: ");
             var username = Console.ReadLine();
