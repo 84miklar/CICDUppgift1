@@ -13,13 +13,27 @@
         public void AddUser(string username, string password, int salary, string title, bool isAdmin)
         {
             {
-                if (Seeder.FillUser(username, password, salary, title, isAdmin))
+                if (isAdmin)
                 {
-                    Console.WriteLine("User was added to database");
+                    if (Seeder.FillAdmin(username, password, salary, title))
+                    {
+                        Console.WriteLine("A new admin was added to database");
+                    }
+                    else
+                    {
+                        Console.WriteLine("The user does already exist in database");
+                    }
                 }
                 else
                 {
-                    Console.WriteLine("The user does already exist in database");
+                    if (Seeder.FillUser(username, password, salary, title))
+                    {
+                        Console.WriteLine($"{username} was added to database");
+                    }
+                    else
+                    {
+                        Console.WriteLine("The user does already exist in database");
+                    }
                 }
             }
         }

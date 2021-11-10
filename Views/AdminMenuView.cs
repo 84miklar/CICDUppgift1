@@ -13,7 +13,7 @@
     {
         private InputCheck check = new();
 
-        public void AdminMenuSwitch(User loggedInUser)
+        public void AdminMenuSwitch(Admin loggedInUser)
         {
             MainMenuView mainPointer = new();
             while (true)
@@ -104,10 +104,8 @@
             }
             Console.WriteLine("Fill in salary: ");
             var salary = check.TryParse();
-
             Console.WriteLine("Fill in the title of person: ");
             var title = Console.ReadLine();
-
             adminController.AddUser(username, password, salary, title, isAdmin);
         }
     }

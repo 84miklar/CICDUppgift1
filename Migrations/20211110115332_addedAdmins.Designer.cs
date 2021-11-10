@@ -2,14 +2,16 @@
 using CICDUppgift1.Database;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CICDUppgift1.Migrations
 {
     [DbContext(typeof(UserDatabase))]
-    partial class UserDatabaseModelSnapshot : ModelSnapshot
+    [Migration("20211110115332_addedAdmins")]
+    partial class addedAdmins
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -19,6 +21,9 @@ namespace CICDUppgift1.Migrations
                 {
                     b.Property<int>("AdminId")
                         .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<bool>("IsAdmin")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Name")
@@ -42,6 +47,9 @@ namespace CICDUppgift1.Migrations
                 {
                     b.Property<int>("UserId")
                         .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<bool>("IsAdmin")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Name")
