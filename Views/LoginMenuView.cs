@@ -10,8 +10,6 @@
 
     internal class LoginMenuView
     {
-        private LoginMenuController controller = new();
-        private MainMenuView mainMenuPointer = new();
         private InputCheck check = new();
         public bool keepGoing = true;
 
@@ -26,7 +24,6 @@
                 {
                     case 1:
                         Login();
-                        keepGoing = false;
                         break;
 
                     case 2:
@@ -40,6 +37,8 @@
 
         private void Login()
         {
+            LoginMenuController controller = new();
+            MainMenuView mainMenuPointer = new();
             Console.Write("Username: ");
             var username = Console.ReadLine();
             Console.Write("Password: ");
@@ -51,6 +50,7 @@
             }
             else
             {
+                keepGoing = false;
                 mainMenuPointer.MainMenu(loggedInUser);
             }
         }
