@@ -57,11 +57,11 @@
         internal List<iAccount> ShowAllUsers()
         {
             UserDatabase context = new();
-            
-          var allUsers = context.Users.ToList();
-            
-          var allAdmins = (IList<iAccount>)context.Admins.ToList();
-           return allUsers.Concat(allAdmins).ToList();
+            var allUsers = context.Users.ToList();
+            var allAdmins = context.Admins.ToList();
+            List<iAccount> all = allUsers.Select(x => (iAccount)x).ToList();
+            all.AddRange(allAdmins.Select(x => (iAccount)x).ToList());
+            return all;
         }
         //public User FindUser(User l)
         //{

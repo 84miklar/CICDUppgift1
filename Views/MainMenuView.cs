@@ -31,14 +31,14 @@ namespace CICDUppgift1.Views
 
         public void ShowTitle(iAccount loggedInUser)
         {
-            Console.WriteLine($"Your title is {loggedInUser.Title}");
-            check.PressEnter();
+            Console.WriteLine($"\nYour title is {loggedInUser.Title}");
+            GeneralHelpers.PressEnter();
         }
 
         public void ShowSalary(iAccount loggedInUser)
         {
-            Console.WriteLine($"Your salary is {loggedInUser.Salary}");
-            check.PressEnter();
+            Console.WriteLine($"\nYour salary is {loggedInUser.Salary}");
+            GeneralHelpers.PressEnter();
         }
     }
 }

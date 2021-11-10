@@ -21,7 +21,8 @@
 
             while (keepGoing)
             {
-                Console.WriteLine("1. Show salary \n2.Show title \n3. Delete yourself \n 4. Exit");
+                Console.Clear();
+                Console.WriteLine("1. Show salary \n2. Show title \n3. Delete yourself \n4. Exit");
                 var userChoice = check.TryParse();
                 switch (userChoice)
                 {
@@ -49,7 +50,7 @@
         public bool DeleteUser(User loggedInUser)
         {
             UserMenuController userController = new();
-            Console.WriteLine("Please enter your username: ");
+            Console.WriteLine("\nPlease enter your username: ");
             var username = Console.ReadLine();
             Console.WriteLine("Please enter your password: ");
             var password = Console.ReadLine();

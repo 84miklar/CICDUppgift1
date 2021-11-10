@@ -28,7 +28,7 @@
                     if (user == null)
                     {
                         Console.WriteLine("You have succesfully deleted your account");
-                        helper.PressEnter();
+                       GeneralHelpers.PressEnter();
                         return false;
                     }
                     else
