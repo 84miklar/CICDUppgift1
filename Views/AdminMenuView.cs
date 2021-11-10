@@ -54,7 +54,7 @@
                     break;
 
                 case 2:
-
+                    ShowAllUsers();
                     break;
 
                 case 3:
@@ -66,6 +66,15 @@
 
                 default:
                     break;
+            }
+        }
+
+        private void ShowAllUsers()
+        {
+            AdminMenuController adminController = new();
+            foreach (var item in adminController.ShowAllUsers())
+            {
+                Console.WriteLine(item.Name +" - " +item.Password);
             }
         }
 
