@@ -6,16 +6,15 @@
     using System.Text;
     using System.Threading.Tasks;
 
-    internal class InputCheck
+    public class InputCheck
     {
         /// <summary>
         /// Method that takes input from user and tries to parse it to a number.
         /// </summary>
         /// <returns>parsed number. If input is not a number, or <1, value is 0.</returns>
-        public int TryParse()
+        public int TryParse(string number)
         {
-            Console.Write("\n> ");
-            int.TryParse(Console.ReadLine(), out int parsedValue);
+            int.TryParse(number, out int parsedValue);
             if (parsedValue <= 0)
             {
                 Console.WriteLine("Invalid input. Input must be an integer more than 0.");
@@ -23,8 +22,6 @@
             }
             return parsedValue;
         }
-
-       
 
         public bool StringCheck(string input)
         {

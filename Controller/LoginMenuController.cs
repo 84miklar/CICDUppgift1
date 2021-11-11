@@ -8,7 +8,7 @@
     using System.Text;
     using System.Threading.Tasks;
 
-    internal class LoginMenuController
+    public class LoginMenuController
     {
         public iAccount Login(string username, string password)
         {
@@ -24,13 +24,12 @@
                 else
                 {
                     var admin = context.Admins.FirstOrDefault(u => u.Name == username && u.Password == password);
-                    if(admin!= null)
+                    if (admin != null)
                     {
                         context.Admins.Update(admin);
                         context.SaveChanges();
                         return admin;
                     }
-
                 }
             }
             return null;

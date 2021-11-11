@@ -7,6 +7,7 @@
     using System.Collections.Generic;
     using System.Linq;
     using System.Text;
+    using System.Threading;
     using System.Threading.Tasks;
 
     internal class UserMenuView
@@ -23,7 +24,7 @@
             {
                 Console.Clear();
                 Console.WriteLine("1. Show salary \n2. Show title \n3. Delete yourself \n4. Exit");
-                var userChoice = check.TryParse();
+                var userChoice = check.TryParse(Console.ReadLine());
                 switch (userChoice)
                 {
                     case 1:
@@ -60,7 +61,8 @@
             }
             else
             {
-                Console.WriteLine("Input does not match any valid user information");
+                Console.WriteLine("Input does not match your user information");
+                Thread.Sleep(750);
                 return true;
             }
         }

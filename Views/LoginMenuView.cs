@@ -15,11 +15,12 @@
 
         public void LoginView()
         {
+            Console.Clear();
             while (keepGoing)
             {
                 Console.WriteLine("Welcome to the your co-worker space");
                 Console.WriteLine("1. Enter your details \n2. Exit");
-                var userChoice = check.TryParse();
+                var userChoice = check.TryParse(Console.ReadLine());
                 switch (userChoice)
                 {
                     case 1:

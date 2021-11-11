@@ -20,7 +20,7 @@
             {
                 Console.Clear();
                 Console.WriteLine("1. Show salary \n2.Show title \n3. Handle users \n4. Exit");
-                var userChoice = check.TryParse();
+                var userChoice = check.TryParse(Console.ReadLine());
                 switch (userChoice)
                 {
                     case 1:
@@ -48,7 +48,7 @@
         {
             Console.Clear();
             Console.WriteLine("1. Add new user \n2. See all users \n3. Delete Users \n4. Exit");
-            var userChoice = check.TryParse();
+            var userChoice = check.TryParse(Console.ReadLine());
             switch (userChoice)
             {
                 case 1:
@@ -77,18 +77,17 @@
             Console.WriteLine("\nID\tUsername\t\tPassword\t\tTitle");
             foreach (var item in adminController.ShowAllUsers())
             {
-                if(item is User user)
+                if (item is User user)
                 {
                     Console.Write(user.UserId + "\t");
                 }
-                if(item is Admin admin)
+                if (item is Admin admin)
                 {
-                    Console.Write(admin.AdminId +"\t");
+                    Console.Write(admin.AdminId + "\t");
                 }
-                Console.WriteLine(item.Name +"\t\t\t" +item.Password + "\t\t\t" + item.Title);
+                Console.WriteLine(item.Name + "\t\t\t" + item.Password + "\t\t\t" + item.Title);
             }
             GeneralHelpers.PressEnter();
-
         }
 
         private void DeleteUser()
@@ -126,7 +125,7 @@
                 isAdmin = true;
             }
             Console.WriteLine("Fill in salary: ");
-            var salary = check.TryParse();
+            var salary = check.TryParse(Console.ReadLine());
             Console.WriteLine("Fill in the title of person: ");
             var title = Console.ReadLine();
             adminController.AddUser(username, password, salary, title, isAdmin);
