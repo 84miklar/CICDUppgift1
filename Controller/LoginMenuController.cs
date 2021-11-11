@@ -10,7 +10,7 @@
 
     internal class LoginMenuController
     {
-        public User Login(string username, string password)
+        public iAccount Login(string username, string password)
         {
             UserDatabase context = new();
             {
@@ -20,6 +20,17 @@
                     context.Users.Update(user);
                     context.SaveChanges();
                     return user;
+                }
+                else
+                {
+                    var admin = context.Admins.FirstOrDefault(u => u.Name == username && u.Password == password);
+                    if(admin!= null)
+                    {
+                        context.Admins.Update(admin);
+                        context.SaveChanges();
+                        return admin;
+                    }
+
                 }
             }
             return null;

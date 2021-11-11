@@ -14,6 +14,7 @@
         /// <returns>parsed number. If input is not a number, or <1, value is 0.</returns>
         public int TryParse()
         {
+            Console.Write("\n> ");
             int.TryParse(Console.ReadLine(), out int parsedValue);
             if (parsedValue <= 0)
             {
@@ -23,14 +24,7 @@
             return parsedValue;
         }
 
-        /// <summary>
-        /// Sends a message to user to press enter button.
-        /// </summary>
-        public void PressEnter()
-        {
-            Console.WriteLine("\nPlease press enter to continue.");
-            Console.ReadKey();
-        }
+       
 
         public bool StringCheck(string input)
         {
