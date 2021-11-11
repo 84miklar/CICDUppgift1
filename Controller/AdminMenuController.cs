@@ -8,7 +8,7 @@
     using System.Text;
     using System.Threading.Tasks;
 
-    internal class AdminMenuController
+    public class AdminMenuController
     {
         public void AddUser(string username, string password, int salary, string title, bool isAdmin)
         {
@@ -37,6 +37,7 @@
                 }
             }
         }
+
         public void DeleteUser(string username, string password)
         {
             UserDatabase context = new();
@@ -51,10 +52,9 @@
             {
                 Console.WriteLine("No user was found...");
             }
-
         }
 
-        internal List<iAccount> ShowAllUsers()
+        public List<iAccount> ShowAllUsers()
         {
             UserDatabase context = new();
             var allUsers = context.Users.ToList();
@@ -63,6 +63,7 @@
             all.AddRange(allAdmins.Select(x => (iAccount)x).ToList());
             return all;
         }
+
         //public User FindUser(User l)
         //{
         //    {
