@@ -12,33 +12,33 @@ namespace CICDUppgift1.Views
     public class MainMenuView
     {
         private InputCheck check = new();
-        private AdminMenuView adminPointer = new();
-        private UserMenuView userPointer = new();
 
-        internal void MainMenu(User loggedInUser)
+        internal void MainMenu(iAccount loggedInUser)
         {
+            AdminMenuView adminPointer = new();
+            UserMenuView userPointer = new();
             Console.Clear();
 
-            if (!loggedInUser.IsAdmin)
+            if (loggedInUser is User)
             {
-                userPointer.UserMenuSwitch(loggedInUser);
+                userPointer.UserMenuSwitch(loggedInUser as User);
             }
             else
             {
-                adminPointer.AdminMenuSwitch(loggedInUser);
+                adminPointer.AdminMenuSwitch(loggedInUser as Admin);
             }
         }
 
-        public void ShowTitle(User loggedInUser)
+        public void ShowTitle(iAccount loggedInUser)
         {
-            Console.WriteLine($"Your title is {loggedInUser.Title}");
-            check.PressEnter();
+            Console.WriteLine($"\nYour title is {loggedInUser.Title}");
+            GeneralHelpers.PressEnter();
         }
 
-        public void ShowSalary(User loggedInUser)
+        public void ShowSalary(iAccount loggedInUser)
         {
-            Console.WriteLine($"Your salary is {loggedInUser.Salary}");
-            check.PressEnter();
+            Console.WriteLine($"\nYour salary is {loggedInUser.Salary}");
+            GeneralHelpers.PressEnter();
         }
     }
 }

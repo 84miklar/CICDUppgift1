@@ -12,11 +12,12 @@
 
     internal class UserMenuController
     {
-        private UserDatabase context = new();
         private InputCheck helper = new();
 
-        public User DeleteUser(User loggedInUser)
+        public bool DeleteUser(User loggedInUser)
         {
+            UserDatabase context = new();
+            LoginMenuView loginView = new();
             {
                 var user = context.Users.FirstOrDefault(u => u.Name == loggedInUser.Name && u.Password == loggedInUser.Password);
                 if (user != null)
@@ -27,17 +28,19 @@
                     if (user == null)
                     {
                         Console.WriteLine("You have succesfully deleted your account");
-                        helper.PressEnter();
+                       GeneralHelpers.PressEnter();
+                        return false;
                     }
                     else
                     {
                         Console.WriteLine("Something went wrong with deleteing your account.");
                         MainMenuView menu = new();
                         menu.MainMenu(loggedInUser);
+                        return true;
                     }
                 }
             }
-            return null;
+            return true;
         }
     }
 }

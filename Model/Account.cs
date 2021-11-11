@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 
 namespace CICDUppgift1.Model
 {
-    public class User : iAccount
+    public abstract class Account
     {
-        [Key]
-        public int UserId { get; set; }
+       
         public string Name { get; set; }
         public string Password { get; set; }
         public string Title { get; set; }
         public int Salary { get; set; }
+        public bool IsAdmin { get; set; }
     }
 }

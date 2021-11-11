@@ -12,6 +12,7 @@ namespace CICDUppgift1.Database
     public class UserDatabase : DbContext
     {
         public DbSet<User> Users { get; set; }
+        public DbSet<Admin> Admins { get; set; }
         public string DatabaseName = "UserDb.db";
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
