@@ -2,7 +2,7 @@
 
 namespace CICDUppgift1.Migrations
 {
-    public partial class @new : Migration
+    public partial class newPath : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
