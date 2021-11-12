@@ -26,7 +26,8 @@ jobs:
     - name: Super-Linter
       uses: github/super-linter@v4.8.1
       env:
-        FILTER_REGEX_EXCLUDE: .*Migrations/.* && .*.github/.*
+        FILTER_REGEX_EXCLUDE: .*Migrations/.*
+        VALIDATE_GITHUB_ACTIONS: false
   secondJob:
      name: WindowsAndMac
      runs-on: ${{ matrix.os }}
