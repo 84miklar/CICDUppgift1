@@ -25,3 +25,5 @@ jobs:
       run: dotnet test --no-build --verbosity normal
     - name: Super-Linter
       uses: github/super-linter@v4.8.1
+      env:
+        FILTER_REGEX_EXCLUDE: .*Migration/.*
