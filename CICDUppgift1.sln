@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31729.503
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CICDUppgift1", "CICDUppgift1.csproj", "{DDE1BC99-0143-45A1-9A74-6D0B636D035D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CICDUppgift1", "CICDUppgift1\CICDUppgift1.csproj", "{DDE1BC99-0143-45A1-9A74-6D0B636D035D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CICDUppgift1Test", "..\CICDUppgift1Test\CICDUppgift1Test.csproj", "{23BBCE2A-1C0F-4E4D-8A23-67F3274DF0EB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CICDUppgift1Test", "CICDUppgift1Test\CICDUppgift1Test.csproj", "{23BBCE2A-1C0F-4E4D-8A23-67F3274DF0EB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
