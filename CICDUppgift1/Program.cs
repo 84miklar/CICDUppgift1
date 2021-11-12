@@ -13,7 +13,6 @@ namespace CICDUppgift1
             LoginMenuView loginPointer = new();
             Seeder.AddNewUsers();
             loginPointer.LoginView();
-            Console.WriteLine(" ");
         }
     }
 }
