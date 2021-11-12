@@ -25,7 +25,7 @@ namespace CICDUppgift1.Database
                 var user = db.Users.FirstOrDefault(b => b.Name == name);
                 if (user == null)
                 {
-                    user = new User { Name = name, Password = password, Salary = salary, Title = title};
+                    user = new User { Name = name, Password = password, Salary = salary, Title = title };
                     db.Update(user);
                     db.SaveChanges();
                     return true;
@@ -33,6 +33,7 @@ namespace CICDUppgift1.Database
                 return false;
             }
         }
+
         public static bool FillAdmin(string name, string password, int salary, string title)
         {
             using (var db = new UserDatabase())
@@ -40,7 +41,7 @@ namespace CICDUppgift1.Database
                 var admin = db.Admins.FirstOrDefault(b => b.Name == name);
                 if (admin == null)
                 {
-                    admin = new Admin { Name = name, Password = password, Salary = salary, Title = title};
+                    admin = new Admin { Name = name, Password = password, Salary = salary, Title = title };
                     db.Update(admin);
                     db.SaveChanges();
                     return true;

@@ -8,9 +8,10 @@
     using System.Collections.Generic;
     using System.Linq;
     using System.Text;
+    using System.Threading;
     using System.Threading.Tasks;
 
-    internal class UserMenuController
+    public class UserMenuController
     {
         private InputCheck helper = new();
 
@@ -27,8 +28,8 @@
                     user = context.Users.FirstOrDefault(u => u.Name == loggedInUser.Name && u.Password == loggedInUser.Password);
                     if (user == null)
                     {
-                        Console.WriteLine("You have succesfully deleted your account");
-                       GeneralHelpers.PressEnter();
+                        Console.WriteLine("\nYou have succesfully deleted your account");
+                        Thread.Sleep(750);
                         return false;
                     }
                     else
@@ -39,8 +40,8 @@
                         return true;
                     }
                 }
+                return true;
             }
-            return true;
         }
     }
 }
