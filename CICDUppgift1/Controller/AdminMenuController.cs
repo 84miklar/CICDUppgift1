@@ -1,43 +1,62 @@
 ﻿namespace CICDUppgift1.Controller
 {
     using CICDUppgift1.Database;
+    using CICDUppgift1.Helpers;
     using CICDUppgift1.Model;
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
 
+    /// <summary>
+    /// Class containing Admin controllers.
+    /// </summary>
     public class AdminMenuController
     {
+        /// <summary>
+        /// Controller method for adding new user into database.
+        /// </summary>
+        /// <param name="username">username of added user</param>
+        /// <param name="password">password of added user</param>
+        /// <param name="salary">salary of added user</param>
+        /// <param name="title">title of added user</param>
+        /// <param name="isAdmin">bool statement if user is and admin or not</param>
         public void AddUser(string username, string password, int salary, string title, bool isAdmin)
         {
             {
-                if (isAdmin)
+                InputCheck check = new();
+                if (check.StringCheck(username) && check.StringCheck(password))
                 {
-                    if (Seeder.FillAdmin(username, password, salary, title))
+                    if (isAdmin)
                     {
-                        Console.WriteLine("A new admin was added to database");
+                        if (Seeder.FillAdmin(username, password, salary, title))
+                        {
+                            Console.WriteLine("A new admin was added to database");
+                        }
+                        else
+                        {
+                            Console.WriteLine("The user does already exist in database");
+                        }
                     }
                     else
                     {
-                        Console.WriteLine("The user does already exist in database");
-                    }
-                }
-                else
-                {
-                    if (Seeder.FillUser(username, password, salary, title))
-                    {
-                        Console.WriteLine($"{username} was added to database");
-                    }
-                    else
-                    {
-                        Console.WriteLine("The user does already exist in database");
+                        if (Seeder.FillUser(username, password, salary, title))
+                        {
+                            Console.WriteLine($"{username} was added to database");
+                        }
+                        else
+                        {
+                            Console.WriteLine("The user does already exist in database");
+                        }
                     }
                 }
             }
         }
 
+        /// <summary>
+        /// Controller method for deleting existing user.
+        /// </summary>
+        /// <param name="username">username of user going to be deleted</param>
+        /// <param name="password">password of user going to be deleted</param>
         public void DeleteUser(string username, string password)
         {
             UserDatabase context = new();
@@ -46,14 +65,18 @@
             {
                 context.Users.Remove(user);
                 context.SaveChanges();
-                Console.WriteLine($"You have succesfully removed {username}");
+                GeneralHelpers.SuccessMessage();
             }
             else
             {
-                Console.WriteLine("No user was found...");
+                GeneralHelpers.FailureMessage();
             }
         }
 
+        /// <summary>
+        /// Method for adding users into list that is available in views for show.
+        /// </summary>
+        /// <returns>Returns a list of all users listed in database</returns>
         public List<iAccount> ShowAllUsers()
         {
             UserDatabase context = new();
@@ -63,30 +86,5 @@
             all.AddRange(allAdmins.Select(x => (iAccount)x).ToList());
             return all;
         }
-
-        //public User FindUser(User l)
-        //{
-        //    {
-        //        var user = context.Users.FirstOrDefault(u => u.Name == loggedInUser.Name && u.Password == loggedInUser.Password);
-        //        if (user != null)
-        //        {
-        //            context.Users.Remove(user);
-        //            context.SaveChanges();
-        //            user = context.Users.FirstOrDefault(u => u.Name == loggedInUser.Name && u.Password == loggedInUser.Password);
-        //            if (user == null)
-        //            {
-        //                Console.WriteLine("You have succesfully deleted your account");
-        //                helper.PressEnter();
-        //            }
-        //            else
-        //            {
-        //                Console.WriteLine("Something went wrong with deleteing your account.");
-        //                MainMenuView menu = new();
-        //                menu.MainMenu(loggedInUser);
-        //            }
-        //        }
-        //    }
-        //    return null;
-        //}
     }
 }

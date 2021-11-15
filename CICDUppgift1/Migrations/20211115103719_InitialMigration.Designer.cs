@@ -8,8 +8,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CICDUppgift1.Migrations
 {
     [DbContext(typeof(UserDatabase))]
-    [Migration("20211112132253_newPath")]
-    partial class newPath
+    [Migration("20211115103719_InitialMigration")]
+    partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

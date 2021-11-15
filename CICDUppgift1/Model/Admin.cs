@@ -7,7 +7,10 @@ using System.Threading.Tasks;
 
 namespace CICDUppgift1.Model
 {
-    public class Admin : iAccount
+    /// <summary>
+    /// Represents Admin in the database
+    /// </summary>
+    public class Admin : Account, iAccount
     {
         [Key]
         public int AdminId { get; set; }

@@ -3,16 +3,18 @@
     using CICDUppgift1.Controller;
     using CICDUppgift1.Helpers;
     using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
 
+    /// <summary>
+    /// Class that handles the view for Login Menu
+    /// </summary>
     internal class LoginMenuView
     {
         private InputCheck check = new();
         public bool keepGoing = true;
 
+        /// <summary>
+        /// Outputs the Login Menu and handles input choice.
+        /// </summary>
         public void LoginView()
         {
             Console.Clear();
@@ -36,6 +38,9 @@
             }
         }
 
+        /// <summary>
+        /// Handles the input and output for logging in. If success sends user to Main Menu.
+        /// </summary>
         private void Login()
         {
             LoginMenuController controller = new();
