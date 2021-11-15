@@ -7,9 +7,10 @@ on:
     branches: [ master ]
 
 jobs:
-  firstJob:
+  UbuntuJob:
     name: UbuntuJob
     runs-on: ubuntu-latest
+    if: github.event_name == 'push'
     environment: 
       name: developer
       url: https://www.github.com/84miklar/CICDUppgift1
@@ -27,13 +28,32 @@ jobs:
       uses: github/super-linter@v4.8.1
       env:
         FILTER_REGEX_EXCLUDE: "(.*Migrations/.*|/.github/)"
-  secondJob:
+  
+  pullRequestJob:
+    name: MasterPullRequest
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull-request'
+    environment: 
+      name: master
+      url: https://www.github.com/84miklar/CICDUppgift1
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 5.0.x
+    - name: Restore dependencies
+      run: dotnet restore
+    - name: Build
+      run: dotnet build --no-restore
+    
+  WindowsAndMacJob:
      name: WindowsAndMac
      runs-on: ${{ matrix.os }}
      strategy:
       matrix:
        os: [windows-latest, macos-latest]
-     needs: firstJob
+     needs: UbuntuJob
      steps:
       - uses: actions/checkout@v2
       - name: Setup .NET
@@ -44,20 +64,17 @@ jobs:
         run: dotnet restore
       - name: Build
         run: dotnet build --no-restore
-      
+  
   tests:
-    name: UbuntuTests
-    runs-on: ubuntu-latest
-    needs: firstJob
-    steps:
+      name: UbuntuTests
+      runs-on: ubuntu-latest
+      needs: UbuntuJob
+      steps:
       - uses: actions/checkout@v2
       - name: Setup .NET
         uses: actions/setup-dotnet@v1
         with:
          dotnet-version: 5.0.x
-      - name: Restore dependencies
-        run: dotnet restore
-      - name: Build
-        run: dotnet build --no-restore
       - name: Test
-        run: dotnet test --no-build --verbosity normal 
+        run: dotnet test --verbosity normal
+ 
