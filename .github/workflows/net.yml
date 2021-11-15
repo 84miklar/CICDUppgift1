@@ -32,7 +32,7 @@ jobs:
   pullRequestJob:
     name: MasterPullRequest
     runs-on: ubuntu-latest
-    if: github.event_name == 'pull-request'
+    if: github.event_name == 'pull_request'
     environment: 
       name: master
       url: https://www.github.com/84miklar/CICDUppgift1
