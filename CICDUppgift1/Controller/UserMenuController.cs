@@ -11,10 +11,18 @@
     using System.Threading;
     using System.Threading.Tasks;
 
+    /// <summary>
+    /// Controller class for user menu
+    /// </summary>
     public class UserMenuController
     {
         private InputCheck helper = new();
 
+        /// <summary>
+        /// Controller method for deleting user.
+        /// </summary>
+        /// <param name="loggedInUser">Name om logged in user that will be checked if it exist in database or not.</param>
+        /// <returns>Returns true or false based on success of operation.</returns>
         public bool DeleteUser(User loggedInUser)
         {
             UserDatabase context = new();

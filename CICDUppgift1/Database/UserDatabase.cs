@@ -9,18 +9,21 @@ using System.Threading.Tasks;
 
 namespace CICDUppgift1.Database
 {
+    /// <summary>
+    /// Context class for communicating with database.
+    /// </summary>
     public class UserDatabase : DbContext
     {
         public DbSet<User> Users { get; set; }
         public DbSet<Admin> Admins { get; set; }
         public string DatabaseName = "UserDb.db";
 
+        /// <summary>
+        /// Configuring method used for communication with database.
+        /// </summary>
+        /// <param name="optionsBuilder">Optionsbuilder for database methods</param>
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            //var myDocs = System.Environment.GetFolderPath(
-            //System.Environment.SpecialFolder.MyDocuments);
-            //string desktop = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-            //var myFolder = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName
             var myFolder = Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.Parent.Parent.ToString();
             var path = Path.Combine(myFolder, "Databases");
             Directory.CreateDirectory(path);
