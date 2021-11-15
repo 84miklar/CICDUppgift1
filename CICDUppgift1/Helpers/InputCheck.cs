@@ -1,16 +1,13 @@
 ﻿namespace CICDUppgift1.Helpers
 {
     using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
 
     public class InputCheck
     {
         /// <summary>
-        /// Method that takes input from user and tries to parse it to a number.
+        ///  Method that takes input from user and tries to parse it to a number.
         /// </summary>
+        /// <param name="number">The number to test</param>
         /// <returns>parsed number. If input is not a number, or <1, value is 0.</returns>
         public int TryParse(string number)
         {
@@ -22,6 +19,7 @@
             }
             return parsedValue;
         }
+
         /// <summary>
         /// Checks if the input string contains both letters and digits.
         /// </summary>

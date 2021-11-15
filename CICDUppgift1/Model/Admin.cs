@@ -10,7 +10,7 @@ namespace CICDUppgift1.Model
     /// <summary>
     /// Represents Admin in the database
     /// </summary>
-    public class Admin : iAccount
+    public class Admin : Account, iAccount
     {
         [Key]
         public int AdminId { get; set; }

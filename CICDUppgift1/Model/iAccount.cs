@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CICDUppgift1.Model
+﻿namespace CICDUppgift1.Model
 {
     /// <summary>
     /// Interface to be inplemented by the Users and Admins in the database.

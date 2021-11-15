@@ -1,12 +1,11 @@
 ﻿namespace CICDUppgift1.Controller
 {
     using CICDUppgift1.Database;
+    using CICDUppgift1.Helpers;
     using CICDUppgift1.Model;
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
 
     /// <summary>
     /// Class containing Admin controllers.
@@ -62,11 +61,11 @@
             {
                 context.Users.Remove(user);
                 context.SaveChanges();
-                Console.WriteLine($"You have succesfully removed {username}");
+                GeneralHelpers.SuccessMessage();
             }
             else
             {
-                Console.WriteLine("No user was found...");
+                GeneralHelpers.FailureMessage();
             }
         }
 
