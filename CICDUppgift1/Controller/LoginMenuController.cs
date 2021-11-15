@@ -8,8 +8,17 @@
     using System.Text;
     using System.Threading.Tasks;
 
+    /// <summary>
+    /// Controller class for Login Menu
+    /// </summary>
     public class LoginMenuController
     {
+        /// <summary>
+        /// Controller method for logging in.
+        /// </summary>
+        /// <param name="username">Username of user wanting to log in</param>
+        /// <param name="password">Password of user wanting to log in</param>
+        /// <returns>Interface of user or admin that are in database</returns>
         public iAccount Login(string username, string password)
         {
             UserDatabase context = new();

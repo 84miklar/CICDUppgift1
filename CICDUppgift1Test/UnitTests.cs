@@ -7,7 +7,7 @@
     using NUnit.Framework;
     using System.Linq;
 
-    public class IntegrationTests
+    public class UnitTests
     {
         [SetUp]
         public void Setup()
@@ -16,7 +16,7 @@
         }
 
         [Test]
-        [TestCase("user1", "123")]
+        [TestCase("user1", "testpass1")]
         public void LoginTest(string username, string password)
         {
             var loginContr = new LoginMenuController();
@@ -45,7 +45,7 @@
         }
 
         [Test]
-        [TestCase("user2", "123")]
+        [TestCase("user2", "testpass2")]
         public void DeleteUserTest(string username, string password)
         {
             UserDatabase context = new();
@@ -53,6 +53,17 @@
             var user = context.Users.FirstOrDefault(u => u.Name == username && u.Password == password);
             var returnedUser = userContr.DeleteUser(user);
             Assert.IsFalse(returnedUser);
+        }
+
+        [Test]
+        [TestCase("Testperson1", "TestPass123", 25000, "CEO", false)]
+        public void AddUserTest(string name, string password, int salary, string title, bool isAdmin)
+        {
+            var adminContr = new AdminMenuController();
+            adminContr.AddUser(name, password, salary, title, isAdmin);
+            var listOfUsers = adminContr.ShowAllUsers();
+            var userResult = listOfUsers.FirstOrDefault(x => x.Name == name) as User;
+            Assert.AreEqual(userResult.Name, name);
         }
     }
 }
