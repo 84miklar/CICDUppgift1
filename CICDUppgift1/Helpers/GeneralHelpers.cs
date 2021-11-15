@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace CICDUppgift1.Helpers
 {
+    /// <summary>
+    /// Contains general helpers for the whole project.
+    /// </summary>
     public static class GeneralHelpers
     {
         /// <summary>

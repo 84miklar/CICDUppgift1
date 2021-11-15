@@ -8,11 +8,16 @@
     using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
-
+    /// <summary>
+    /// Class that handles the view for Admin Menu
+    /// </summary>
     internal class AdminMenuView
     {
         private InputCheck check = new();
-
+        /// <summary>
+        /// Outputs the Admin Menu and handles input choice
+        /// </summary>
+        /// <param name="loggedInUser">The Admin object used when logging in</param>
         public void AdminMenuSwitch(Admin loggedInUser)
         {
             MainMenuView mainPointer = new();
@@ -43,7 +48,9 @@
                 }
             }
         }
-
+        /// <summary>
+        /// Outputs the Handle Users Menu and handles input choice.
+        /// </summary>
         private void HandleUsers()
         {
             Console.Clear();
@@ -70,7 +77,9 @@
                     break;
             }
         }
-
+        /// <summary>
+        /// Outputs all Users and Admins in the database.
+        /// </summary>
         private void ShowAllUsers()
         {
             AdminMenuController adminController = new();
@@ -89,7 +98,9 @@
             }
             GeneralHelpers.PressEnter();
         }
-
+        /// <summary>
+        /// Handles outputs and inputs for the Delete User choice.
+        /// </summary>
         private void DeleteUser()
         {
             Console.WriteLine("\nFill in username of the user you want to delete: ");
@@ -100,7 +111,9 @@
             adminController.DeleteUser(username, password);
             GeneralHelpers.PressEnter();
         }
-
+        /// <summary>
+        /// Handles outputs and inputs for the Add new user choice.
+        /// </summary>
         private void AddNewUser()
         {
             AdminMenuController adminController = new();

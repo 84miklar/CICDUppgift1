@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace CICDUppgift1.Model
 {
+    /// <summary>
+    /// Represents a User in the database
+    /// </summary>
     public class User : iAccount
     {
         [Key]

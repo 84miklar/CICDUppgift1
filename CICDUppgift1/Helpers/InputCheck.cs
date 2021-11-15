@@ -22,7 +22,11 @@
             }
             return parsedValue;
         }
-
+        /// <summary>
+        /// Checks if the input string contains both letters and digits.
+        /// </summary>
+        /// <param name="input">The string to test</param>
+        /// <returns>True if input string contains both letters and digits.</returns>
         public bool StringCheck(string input)
         {
             bool letterOk = false;
