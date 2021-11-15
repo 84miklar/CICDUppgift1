@@ -10,7 +10,9 @@ jobs:
   firstJob:
     name: UbuntuJob
     runs-on: ubuntu-latest
-
+    environment: 
+      name: developer
+      url: https://www.github.com/84miklar/CICDUppgift1
     steps:
     - uses: actions/checkout@v2
     - name: Setup .NET
