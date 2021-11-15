@@ -15,13 +15,13 @@ namespace IntegrationTests
             Seeder.AddNewUsers();
         }
 
-        [Test]
-        [TestCase("user1", "123")]
-        public void Mock(string username, string password)
-        {
-            var unitTestPointer = new UnitTests();
-            unitTestPointer.LoginTest(username, password);
-            unitTestPointer.DeleteUserTest(username, password);
-        }
+        //[Test]
+        //[TestCase("user1", "123")]
+        //public void Mock(string username, string password)
+        //{
+        //    var unitTestPointer = new UnitTests();
+        //    unitTestPointer.LoginTest(username, password);
+        //    unitTestPointer.DeleteUserTest(username, password);
+        //}
     }
 }
