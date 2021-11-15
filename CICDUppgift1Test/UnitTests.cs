@@ -74,9 +74,9 @@
         {
             var adminContr = new AdminMenuController();
             adminContr.AddUser(name, password, salary, title, isAdmin);
-            UserDatabase context = new();
-            var user = context.Users.FirstOrDefault(u => u.Name == name && u.Password == password);
-            Assert.AreEqual(user.Name, name);
+            var listOfUsers = adminContr.ShowAllUsers();
+            var userResult = listOfUsers.FirstOrDefault(x => x.Name == name) as User;
+            Assert.AreEqual(userResult.Name, name);
         }
         [Test]
         [TestCase("Testperson 2", "TestPass123", 25000, "CEO", false)]
