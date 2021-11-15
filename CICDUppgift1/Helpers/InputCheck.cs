@@ -29,6 +29,7 @@
         {
             bool letterOk = false;
             bool digitOk = false;
+            bool noWhiteSpace = true;
             for (int i = 0; i < input.Length; i++)
             {
                 if (Char.IsDigit(input[i]))
@@ -39,8 +40,12 @@
                 {
                     letterOk = true;
                 }
+                else if (Char.IsWhiteSpace(input[i]))
+                {
+                    noWhiteSpace = false;
+                }
             }
-            return digitOk && letterOk;
+            return digitOk && letterOk && noWhiteSpace;
         }
     }
 }

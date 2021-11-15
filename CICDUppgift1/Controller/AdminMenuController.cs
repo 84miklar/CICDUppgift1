@@ -23,26 +23,30 @@
         public void AddUser(string username, string password, int salary, string title, bool isAdmin)
         {
             {
-                if (isAdmin)
+                InputCheck check = new();
+                if (check.StringCheck(username) && check.StringCheck(password))
                 {
-                    if (Seeder.FillAdmin(username, password, salary, title))
+                    if (isAdmin)
                     {
-                        Console.WriteLine("A new admin was added to database");
+                        if (Seeder.FillAdmin(username, password, salary, title))
+                        {
+                            Console.WriteLine("A new admin was added to database");
+                        }
+                        else
+                        {
+                            Console.WriteLine("The user does already exist in database");
+                        }
                     }
                     else
                     {
-                        Console.WriteLine("The user does already exist in database");
-                    }
-                }
-                else
-                {
-                    if (Seeder.FillUser(username, password, salary, title))
-                    {
-                        Console.WriteLine($"{username} was added to database");
-                    }
-                    else
-                    {
-                        Console.WriteLine("The user does already exist in database");
+                        if (Seeder.FillUser(username, password, salary, title))
+                        {
+                            Console.WriteLine($"{username} was added to database");
+                        }
+                        else
+                        {
+                            Console.WriteLine("The user does already exist in database");
+                        }
                     }
                 }
             }

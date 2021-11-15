@@ -17,11 +17,23 @@
 
         [Test]
         [TestCase("user1", "testpass1")]
+        [TestCase("admin1", "admin1234")]
         public void LoginTest(string username, string password)
         {
             var loginContr = new LoginMenuController();
             var returnedUser = loginContr.Login(username, password);
             Assert.AreEqual(returnedUser.Name, username);
+        }
+        [Test]
+        [TestCase("use1", "testpass1")]
+        [TestCase("user1", "testpass")]
+        [TestCase("", "testpass1")]
+        [TestCase("user 1", "testpass1")]
+        public void LoginTest_FailExpected(string username, string password)
+        {
+            var loginContr = new LoginMenuController();
+            var returnedUser = loginContr.Login(username, password);
+            Assert.IsNull(returnedUser);
         }
 
         [Test]
@@ -37,6 +49,7 @@
         [Test]
         [TestCase("hej123", true)]
         [TestCase("hej", false)]
+        [TestCase("he j123", false)]
         public void StringCheckTest(string testString, bool expected)
         {
             var helperContr = new InputCheck();
@@ -61,9 +74,20 @@
         {
             var adminContr = new AdminMenuController();
             adminContr.AddUser(name, password, salary, title, isAdmin);
-            var listOfUsers = adminContr.ShowAllUsers();
-            var userResult = listOfUsers.FirstOrDefault(x => x.Name == name) as User;
-            Assert.AreEqual(userResult.Name, name);
+            UserDatabase context = new();
+            var user = context.Users.FirstOrDefault(u => u.Name == name && u.Password == password);
+            Assert.AreEqual(user.Name, name);
+        }
+        [Test]
+        [TestCase("Testperson 2", "TestPass123", 25000, "CEO", false)]
+        [TestCase("", "TestPass123", 25000, "CEO", false)]
+        public void AddUserTest_NullExpected(string name, string password, int salary, string title, bool isAdmin)
+        {
+            var adminContr = new AdminMenuController();
+            adminContr.AddUser(name, password, salary, title, isAdmin);
+            UserDatabase context = new();
+            var user = context.Users.FirstOrDefault(u => u.Name == name && u.Password == password);
+            Assert.IsNull(user);
         }
     }
 }
