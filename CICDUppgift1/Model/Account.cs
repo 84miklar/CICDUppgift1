@@ -1,18 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using CICDUppgift1.Helpers;
+using System;
 
 namespace CICDUppgift1.Model
 {
     public abstract class Account
     {
-        public string Name { get; set; }
-        public string Password { get; set; }
-        public string Title { get; set; }
-        public int Salary { get; set; }
-        public bool IsAdmin { get; set; }
+        /// <summary>
+        /// Shows the value of the Title property of the iAccount object
+        /// </summary>
+        /// <param name="loggedInUser">The iAccount object used when logging in</param>
+        public void ShowTitle(iAccount loggedInUser)
+        {
+            Console.WriteLine($"\nYour title is {loggedInUser.Title}");
+            GeneralHelpers.PressEnter();
+        }
+
+        /// <summary>
+        /// Shows the value of the Salary property of the iAccount object
+        /// </summary>
+        /// <param name="loggedInUser">The iAccount object used when logging in</param>
+        public void ShowSalary(iAccount loggedInUser)
+        {
+            Console.WriteLine($"\nYour salary is {loggedInUser.Salary}");
+            GeneralHelpers.PressEnter();
+        }
     }
 }

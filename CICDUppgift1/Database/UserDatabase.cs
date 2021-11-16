@@ -1,11 +1,7 @@
 ﻿using CICDUppgift1.Model;
 using Microsoft.EntityFrameworkCore;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CICDUppgift1.Database
 {
