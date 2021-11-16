@@ -15,13 +15,34 @@ namespace IntegrationTests
             Seeder.AddNewUsers();
         }
 
-        //[Test]
-        //[TestCase("user1", "123")]
-        //public void Mock(string username, string password)
-        //{
-        //    var unitTestPointer = new UnitTests();
-        //    unitTestPointer.LoginTest(username, password);
-        //    unitTestPointer.DeleteUserTest(username, password);
-        //}
+        [Test]
+        [TestCase("admin1", "admin1234")]
+        public void AddUserIntegrationTest(string username, string password)
+        {
+            UserDatabase context = new();
+            var unitTestPointer = new UnitTests();
+            var testPersonName = "IntegrationTestPerson1";
+            var testPersonPass = "IntegrationTestPass123";
+            unitTestPointer.LoginTest(username, password);
+            unitTestPointer.AddUserTest(testPersonName, testPersonPass, 15000, "Intern", false);
+            var user = context.Users.FirstOrDefault(u => u.Name == testPersonName && u.Password == testPersonPass);
+            Assert.AreEqual(testPersonName, user.Name);
+        }
+
+        [Test]
+        [TestCase("admin1", "admin1234")]
+        public void DeleteUserIntegrationTest(string username, string password)
+        {
+            UserDatabase context = new();
+            var unitTestPointer = new UnitTests();
+            var testPersonName = "IntegrationTestPerson2";
+            var testPersonPass = "IntegrationTestPass1234";
+            unitTestPointer.LoginTest(username, password);
+            unitTestPointer.AddUserTest(testPersonName, testPersonPass, 20000, "Service", false);
+            unitTestPointer.LoginTest(testPersonName, testPersonPass);
+            unitTestPointer.UserDeleteUserTest(testPersonName, testPersonPass);
+            var user = context.Users.FirstOrDefault(u => u.Name == testPersonName && u.Password == testPersonPass);
+            Assert.IsNull(user);
+        }
     }
 }
