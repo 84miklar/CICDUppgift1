@@ -11,8 +11,8 @@
         /// <returns>parsed number. If input is not a number, or <1, value is 0.</returns>
         public int TryParse(string number)
         {
-            var parseTest = int.TryParse(number, out int parsedValue);
-            if (parseTest && parsedValue <= 0)
+            int.TryParse(number, out int parsedValue);
+            if (parsedValue <= 0)
             {
                 Console.WriteLine("Invalid input. Input must be an integer more than 0.");
                 return -1;
