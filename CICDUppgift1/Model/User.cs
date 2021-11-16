@@ -1,11 +1,11 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace CICDUppgift1.Model
+﻿namespace CICDUppgift1.Model
 {
+    using System.ComponentModel.DataAnnotations;
+
     /// <summary>
     /// Represents a User in the database
     /// </summary>
-    public class User : Account, iAccount
+    public class User : Account, IAccount
     {
         [Key]
         public int UserId { get; set; }

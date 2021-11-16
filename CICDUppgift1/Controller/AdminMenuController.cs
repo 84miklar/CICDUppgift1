@@ -77,13 +77,13 @@
         /// Method for adding users into list that is available in views for show.
         /// </summary>
         /// <returns>Returns a list of all users listed in database</returns>
-        public List<iAccount> ShowAllUsers()
+        public List<IAccount> ShowAllUsers()
         {
             UserDatabase context = new();
             var allUsers = context.Users.ToList();
             var allAdmins = context.Admins.ToList();
-            List<iAccount> all = allUsers.Select(x => (iAccount)x).ToList();
-            all.AddRange(allAdmins.Select(x => (iAccount)x).ToList());
+            List<IAccount> all = allUsers.Cast<IAccount>().ToList();
+            all.AddRange(allAdmins.Cast<IAccount>().ToList());
             return all;
         }
     }

@@ -99,7 +99,7 @@
             var adminContr = new AdminMenuController();
             adminContr.AddUser(name, password, salary, title, isAdmin);
             var listOfUsers = adminContr.ShowAllUsers();
-            var userResult = listOfUsers.FirstOrDefault(x => x.Name == name) as User;
+            var userResult = listOfUsers.Find(x => x.Name == name) as User;
             Assert.AreEqual(userResult.Name, name);
         }
     }

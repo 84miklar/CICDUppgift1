@@ -1,8 +1,8 @@
-﻿using CICDUppgift1.Model;
-using System.Linq;
-
-namespace CICDUppgift1.Database
+﻿namespace CICDUppgift1.Database
 {
+    using CICDUppgift1.Model;
+    using System.Linq;
+
     /// <summary>
     /// Seeder class that are filling upp database if it's not already filled.
     /// </summary>

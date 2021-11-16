@@ -1,9 +1,8 @@
-﻿using CICDUppgift1.Helpers;
-using CICDUppgift1.Model;
-using System;
-
-namespace CICDUppgift1.Views
+﻿namespace CICDUppgift1.Views
 {
+    using CICDUppgift1.Model;
+    using System;
+
     /// <summary>
     /// Class that handles the view for Main Menu
     /// </summary>
@@ -13,7 +12,7 @@ namespace CICDUppgift1.Views
         /// Method that determines which Main Menu to be showned, Admin or User Menu.
         /// </summary>
         /// <param name="loggedInUser">The iAccount object used when logging in</param>
-        internal void MainMenu(iAccount loggedInUser)
+        internal void MainMenu(IAccount loggedInUser)
         {
             AdminMenuView adminPointer = new();
             UserMenuView userPointer = new();

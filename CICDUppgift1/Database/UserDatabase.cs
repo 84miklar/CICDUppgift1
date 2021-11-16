@@ -1,10 +1,10 @@
-﻿using CICDUppgift1.Model;
-using Microsoft.EntityFrameworkCore;
-using System;
-using System.IO;
-
-namespace CICDUppgift1.Database
+﻿namespace CICDUppgift1.Database
 {
+    using CICDUppgift1.Model;
+    using Microsoft.EntityFrameworkCore;
+    using System;
+    using System.IO;
+
     /// <summary>
     /// Context class for communicating with database.
     /// </summary>

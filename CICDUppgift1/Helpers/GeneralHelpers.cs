@@ -1,8 +1,8 @@
-﻿using System;
-using System.Threading;
-
-namespace CICDUppgift1.Helpers
+﻿namespace CICDUppgift1.Helpers
 {
+    using System;
+    using System.Threading;
+
     /// <summary>
     /// Contains general helpers for the whole project.
     /// </summary>
