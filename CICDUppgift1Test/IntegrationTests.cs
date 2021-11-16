@@ -1,8 +1,6 @@
 namespace IntegrationTests
 {
-    using CICDUppgift1.Controller;
     using CICDUppgift1.Database;
-    using CICDUppgift1.Model;
     using CICDUppgift1Test;
     using NUnit.Framework;
     using System.Linq;
