@@ -11,8 +11,6 @@
     /// </summary>
     public class UserMenuController
     {
-        private InputCheck helper = new();
-
         /// <summary>
         /// Controller method for deleting user.
         /// </summary>

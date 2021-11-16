@@ -27,9 +27,9 @@
         /// <returns>True if input string contains both letters and digits.</returns>
         public bool StringCheck(string input)
         {
-            bool letterOk = false;
-            bool digitOk = false;
-            bool noWhiteSpace = true;
+            var letterOk = false;
+            var digitOk = false;
+            var noWhiteSpace = true;
             for (int i = 0; i < input.Length; i++)
             {
                 if (Char.IsDigit(input[i]))

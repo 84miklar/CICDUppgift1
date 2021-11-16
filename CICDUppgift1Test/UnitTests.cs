@@ -24,6 +24,7 @@
             var returnedUser = loginContr.Login(username, password);
             Assert.AreEqual(returnedUser.Name, username);
         }
+
         [Test]
         [TestCase("use1", "testpass1")]
         [TestCase("user1", "testpass")]
@@ -59,7 +60,7 @@
 
         [Test]
         [TestCase("user2", "testpass2")]
-        public void DeleteUserTest(string username, string password)
+        public void UserDeleteUserTest(string username, string password)
         {
             UserDatabase context = new();
             var userContr = new UserMenuController();
@@ -69,15 +70,16 @@
         }
 
         [Test]
-        [TestCase("Testperson1", "TestPass123", 25000, "CEO", false)]
-        public void AddUserTest(string name, string password, int salary, string title, bool isAdmin)
+        [TestCase("user3", "testpass3")]
+        public void AdminDeleteUserTest(string username, string password)
         {
+            UserDatabase context = new();
             var adminContr = new AdminMenuController();
-            adminContr.AddUser(name, password, salary, title, isAdmin);
-            var listOfUsers = adminContr.ShowAllUsers();
-            var userResult = listOfUsers.FirstOrDefault(x => x.Name == name) as User;
-            Assert.AreEqual(userResult.Name, name);
+            adminContr.DeleteUser(username, password);
+            var user = context.Users.FirstOrDefault(u => u.Name == username && u.Password == password);
+            Assert.IsNull(user);
         }
+
         [Test]
         [TestCase("Testperson 2", "TestPass123", 25000, "CEO", false)]
         [TestCase("", "TestPass123", 25000, "CEO", false)]
@@ -88,6 +90,17 @@
             UserDatabase context = new();
             var user = context.Users.FirstOrDefault(u => u.Name == name && u.Password == password);
             Assert.IsNull(user);
+        }
+
+        [Test]
+        [TestCase("Testperson1", "TestPass123", 25000, "CEO", false)]
+        public void AddUserTest(string name, string password, int salary, string title, bool isAdmin)
+        {
+            var adminContr = new AdminMenuController();
+            adminContr.AddUser(name, password, salary, title, isAdmin);
+            var listOfUsers = adminContr.ShowAllUsers();
+            var userResult = listOfUsers.Find(x => x.Name == name) as User;
+            Assert.AreEqual(userResult.Name, name);
         }
     }
 }

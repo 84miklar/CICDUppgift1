@@ -10,7 +10,7 @@
     /// </summary>
     internal class AdminMenuView
     {
-        private InputCheck check = new();
+        private readonly InputCheck check = new();
 
         /// <summary>
         /// Outputs the Admin Menu and handles input choice
@@ -18,8 +18,6 @@
         /// <param name="loggedInUser">The Admin object used when logging in</param>
         public void AdminMenuSwitch(Admin loggedInUser)
         {
-            MainMenuView mainPointer = new();
-
             while (true)
             {
                 Console.Clear();
@@ -134,7 +132,7 @@
                 AddNewUser();
             }
             Console.WriteLine("Is this person admin? y/n");
-            bool isAdmin = false;
+            var isAdmin = false;
             var adminQuestion = Console.ReadLine().ToLower();
             if (adminQuestion == "y")
             {

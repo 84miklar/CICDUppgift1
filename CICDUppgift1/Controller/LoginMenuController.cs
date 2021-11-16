@@ -15,7 +15,7 @@
         /// <param name="username">Username of user wanting to log in</param>
         /// <param name="password">Password of user wanting to log in</param>
         /// <returns>Interface of user or admin that are in database</returns>
-        public iAccount Login(string username, string password)
+        public IAccount Login(string username, string password)
         {
             UserDatabase context = new();
             {

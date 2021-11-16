@@ -9,7 +9,7 @@
     /// </summary>
     internal class LoginMenuView
     {
-        private InputCheck check = new();
+        private readonly InputCheck check = new();
         public bool keepGoing = true;
 
         /// <summary>
@@ -49,6 +49,7 @@
             var username = Console.ReadLine();
             Console.Write("Password: ");
             var password = Console.ReadLine();
+            Console.Clear();
             var loggedInUser = controller.Login(username, password);
             if (loggedInUser == null)
             {
