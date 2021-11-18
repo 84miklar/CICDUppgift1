@@ -15,31 +15,36 @@ namespace IntegrationTests
 
         [Test]
         [TestCase("admin1", "admin1234")]
-        public void AddUserIntegrationTest(string username, string password)
+        public void AdminDeleteUserIntegrationTest(string username, string password)
         {
             UserDatabase context = new();
             var unitTestPointer = new UnitTests();
             var testPersonName = "IntegrationTestPerson1";
-            var testPersonPass = "IntegrationTestPass123";
+            var testPersonPass = "IntegrationTestPass1";
             unitTestPointer.LoginTest(username, password);
-            unitTestPointer.AddUserTest(testPersonName, testPersonPass, 15000, "Intern", false);
+            unitTestPointer.AddUserTest(testPersonName, testPersonPass, 25000, "Janitor", false);
             var user = context.Users.FirstOrDefault(u => u.Name == testPersonName && u.Password == testPersonPass);
             Assert.AreEqual(testPersonName, user.Name);
+            unitTestPointer.AdminDeleteUserTest(testPersonName, testPersonPass);
+            user = context.Users.FirstOrDefault(u => u.Name == testPersonName && u.Password == testPersonPass);
+            Assert.IsNull(user);
         }
 
         [Test]
         [TestCase("admin1", "admin1234")]
-        public void DeleteUserIntegrationTest(string username, string password)
+        public void UserDeleteUserIntegrationTest(string username, string password)
         {
             UserDatabase context = new();
             var unitTestPointer = new UnitTests();
             var testPersonName = "IntegrationTestPerson2";
-            var testPersonPass = "IntegrationTestPass1234";
+            var testPersonPass = "IntegrationTestPass2";
             unitTestPointer.LoginTest(username, password);
             unitTestPointer.AddUserTest(testPersonName, testPersonPass, 20000, "Service", false);
             unitTestPointer.LoginTest(testPersonName, testPersonPass);
-            unitTestPointer.UserDeleteUserTest(testPersonName, testPersonPass);
             var user = context.Users.FirstOrDefault(u => u.Name == testPersonName && u.Password == testPersonPass);
+            Assert.AreEqual(testPersonName, user.Name);
+            unitTestPointer.UserDeleteUserTest(testPersonName, testPersonPass);
+            user = context.Users.FirstOrDefault(u => u.Name == testPersonName && u.Password == testPersonPass);
             Assert.IsNull(user);
         }
     }
